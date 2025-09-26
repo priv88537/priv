@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Personal Chat</title>
+    <link rel="stylesheet" href="oersonal.css">
+</head>
+<body>
+    <!-- Fullscreen looping background video -->
+    <video id="bgVideo" autoplay muted loop playsinline>
+        <source src="nissan-silvia.3840x2160.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Messages rendered directly on top of video -->
+    <div id="messagesOverlay" class="messages-overlay" aria-live="polite"></div>
+
+    <!-- rightBox removed as requested -->
+
+    <!-- Top-right controls -->
+    <div class="top-controls top-right">
+        <button id="showHistoryBtn" class="history-btn" type="button">Show previous convos</button>
+    </div>
+
+    <!-- History modal (hidden) -->
+    <div id="historyModal" class="history-modal hidden" role="dialog" aria-modal="true">
+        <div class="history-inner">
+            <button id="closeHistoryBtn" class="close-btn" aria-label="Close">✕</button>
+            <h3>Previous convos</h3>
+            <div id="historyList" class="history-list"></div>
+        </div>
+    </div>
+
+    <!-- Bottom send bar -->
+    <form id="chatForm" class="send-bar" autocomplete="off">
+        <input id="promptInput" name="prompt" type="text" placeholder="Type your message..." />
+        <button type="submit">Send</button>
+    </form>
+
+    <script src="personal.js"></script>
+</body>
+</html>

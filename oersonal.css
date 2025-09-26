@@ -1,0 +1,72 @@
+/* Basic styles for personal chat */
+html,body{height:100%;margin:0}
+body{font-family:Arial,Helvetica,sans-serif;background:#000;color:#fff}
+
+/* Background video full-screen contained */
+#bgVideo{position:fixed;inset:0;width:100vw;height:100vh;object-fit:contain;z-index:0;background:#000}
+
+/* Messages overlayed directly on video */
+.messages-overlay{position:fixed;inset:0;pointer-events:none;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:80px 24px 24px 24px;gap:8px}
+.message{max-width:70%;align-self:flex-start;pointer-events:auto}
+.message.user{align-self:flex-end}
+.bubble{display:inline-block;padding:8px 12px;border-radius:12px;backdrop-filter:blur(4px)}
+.message.user .bubble{background:rgba(255,255,255,0.9);color:#000}
+.message.ai .bubble{background:rgba(0,0,0,0.5);color:#fff}
+
+/* Latest AI reply fixed bar */
+.latest-ai{position:fixed;left:50%;transform:translateX(-50%);bottom:72px;z-index:3;max-width:920px;width:calc(100% - 48px);background:rgba(0,0,0,0.6);color:#fff;padding:10px 16px;border-radius:12px;pointer-events:none}
+.latest-ai.hidden{display:none}
+.latest-ai .text{white-space:pre-wrap}
+
+/* Adjust send bar bottom spacing to accommodate latest-ai */
+.send-bar{position:fixed;top:14px;left:14px;display:flex;gap:8px;padding:6px 10px;z-index:4;align-items:center;pointer-events:auto;border-radius:999px;background:rgba(0,0,0,0.35)}
+.send-bar input{flex:0 0 360px;max-width:420px;padding:8px;border-radius:999px;border:none;background:rgba(255,255,255,0.95);font-size:14px}
+.send-bar button{padding:8px 12px;border-radius:999px;border:none;background:#2b6cb0;color:#fff;font-size:14px}
+
+@media(max-width:520px){
+    .messages-overlay{padding:12px}
+    .message{max-width:88%}
+    .send-bar input{max-width:78%}
+}
+
+/* top controls */
+.top-controls{position:fixed;top:14px;left:14px;z-index:5}
+.history-btn{padding:6px 10px;border-radius:8px;border:none;background:rgba(0,0,0,0.35);color:#fff}
+
+/* position top-right variant */
+.top-controls.top-right{left:auto;right:14px}
+
+/* History modal */
+.history-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:10}
+.history-modal.hidden{display:none}
+.history-inner{background:rgba(0,0,0,0.85);color:#fff;padding:18px;border-radius:8px;max-width:420px;width:calc(100% - 40px);max-height:70vh;overflow:auto;position:relative}
+.history-inner h3{margin:0 0 8px}
+.history-list .entry{padding:8px;border-bottom:1px dashed rgba(255,255,255,0.06);font-size:13px}
+.close-btn{position:absolute;top:10px;right:10px;border:none;background:transparent;color:#fff;font-size:18px}
+
+/* Mobile-specific adjustments */
+@media (max-width:720px){
+    /* make video fill screen on mobile for better feel */
+    #bgVideo{object-fit:cover}
+
+    /* move send bar to bottom and make controls touch-friendly */
+    .send-bar{top:auto;left:12px;right:12px;bottom:12px;padding:8px;justify-content:space-between}
+    .send-bar input{flex:1;max-width:none;padding:12px;font-size:16px}
+    .send-bar button{padding:12px 14px;font-size:16px}
+
+    /* history button to top-right with larger hit area */
+    .top-controls.top-right{right:12px}
+    .history-btn{padding:10px 12px;font-size:15px}
+
+    /* modal full screen on small devices */
+    .history-inner{max-width:96%;width:96%;max-height:82vh;padding:14px}
+}
+
+@media (max-width:420px){
+    .history-btn{padding:10px 12px;font-size:14px}
+    .bubble{padding:10px 14px}
+    .messages-overlay{padding:10px}
+}
+
+/* Right-side convo box */
+/* right-box removed */
